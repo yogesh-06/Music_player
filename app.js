@@ -1,52 +1,47 @@
 var music = document.querySelectorAll(".music").length;
 
-for (var i=0; i< music; i++){
-    
-  document.querySelectorAll(".music")[i].addEventListener('click', function(){
-       var buttonClasses = this.innerHTML;
-       makeSound(buttonClasses);
-    });
+for (var i = 0; i < music; i++) {
+  document.querySelectorAll(".music")[i].addEventListener("click", function () {
+    var buttonClasses = this.innerHTML;
+    makeSound(buttonClasses);
+  });
 }
- 
-document.addEventListener("keypress", function(event){ 
-  makeSound(event.key); 
+
+document.addEventListener("keypress", function (event) {
+  makeSound(event.key);
 });
 let played;
-let audio;
+let audio = new Audio();
 
-function makeSound(key){ 
-  switch(key){
-
+function makeSound(key) {
+  if (audio) {
+    audio.pause();
+  }
+  switch (key) {
     case "M":
-   audio =  new Audio("songs/dilBechara.mp3");
-   audio.play();
-      break;
-      
-
-      case "U" :
-      audio = new Audio("songs/oBarish.mp3");
-      audio.play();
+      audio.src = "songs/dilBechara.mp3";
       break;
 
-      case "S" :
-      audio = new Audio("songs/smackThat.mp3");
-      audio.play();
+    case "U":
+      audio.src = "songs/oBarish.mp3";
       break;
 
-      case "I" :
-      audio = new Audio("songs/sunSathiya.mp3");
-      audio.play();
+    case "S":
+      audio.src = "songs/smackThat.mp3";
       break;
 
-      case "C" :
-      audio = new Audio("songs/teraRasta.mp3");
-      audio.play();
+    case "I":
+      audio.src = "songs/sunSathiya.mp3";
       break;
 
-      case "J" :
-      audio = new Audio("songs/tumSehi.mp3");
-      audio.play();
+    case "C":
+      audio.src = "songs/teraRasta.mp3";
       break;
-    } 
+
+    case "J":
+      audio.src = "songs/tumSehi.mp3";
+      break;
   }
 
+  audio.play();
+}
